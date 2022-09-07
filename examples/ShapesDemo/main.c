@@ -124,7 +124,7 @@ int main(
     {
         char* ip = argv[2];
         char* port = argv[3];
-        if (!uxr_init_udp_transport(&udp, UXR_IPv4, ip, port))
+        if (!uxr_init_udp_transport(&udp, UXR_IPv4, ip, "0", port))
         {
             printf("%sCan not create an udp connection%s\n", RED_CONSOLE_COLOR, RESTORE_COLOR);
             return 1;
@@ -137,7 +137,7 @@ int main(
     {
         char* ip = argv[2];
         char* port = argv[3];
-        if (!uxr_init_udp_transport(&udp, UXR_IPv6, ip, port))
+        if (!uxr_init_udp_transport(&udp, UXR_IPv6, ip, "0", port))
         {
             printf("%sCan not create an udp connection%s\n", RED_CONSOLE_COLOR, RESTORE_COLOR);
             return 1;

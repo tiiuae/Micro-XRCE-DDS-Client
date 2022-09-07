@@ -39,7 +39,7 @@ int main(
 
     // Transport
     uxrUDPTransport transport;
-    if (!uxr_init_udp_transport(&transport, UXR_IPv4, "127.0.0.1", "2018"))
+    if (!uxr_init_udp_transport(&transport, UXR_IPv4, "127.0.0.1", "0", "2018"))
     {
         printf("Error at create transport.\n");
         return 1;
