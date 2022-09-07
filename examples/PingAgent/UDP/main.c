@@ -33,7 +33,7 @@ int main(
 
     uxrUDPTransport transport;
 
-    if (!uxr_init_udp_transport(&transport, UXR_IPv4, ip, port))
+    if (!uxr_init_udp_transport(&transport, UXR_IPv4, ip, "0", port))
     {
         printf("Error during transport creation\n");
         return 1;

@@ -61,7 +61,7 @@ int main(
     // ------ SESSION 1 ------
     // Transport
     uxrUDPTransport transport_1;
-    if (!uxr_init_udp_transport(&transport_1, UXR_IPv4, ip, port))
+    if (!uxr_init_udp_transport(&transport_1, UXR_IPv4, ip, "0", port))
     {
         printf("Error at create transport.\n");
         return 1;
@@ -170,7 +170,7 @@ int main(
     // ------ SESSION 2 ------
     // Transport
     uxrUDPTransport transport_2;
-    if (!uxr_init_udp_transport(&transport_2, UXR_IPv4, ip, port))
+    if (!uxr_init_udp_transport(&transport_2, UXR_IPv4, ip, "0", port))
     {
         printf("Error at create transport.\n");
         return 1;
