@@ -92,11 +92,12 @@ bool uxr_init_udp_transport(
         uxrUDPTransport* transport,
         uxrIpProtocol ip_protocol,
         const char* ip,
-        const char* port)
+        const char* recv_port,
+        const char* send_port)
 {
     bool rv = false;
 
-    if (uxr_init_udp_platform(&transport->platform, ip_protocol, ip, port))
+    if (uxr_init_udp_platform(&transport->platform, ip_protocol, ip, recv_port, send_port))
     {
         /* Setup interface. */
         transport->comm.instance = (void*)transport;

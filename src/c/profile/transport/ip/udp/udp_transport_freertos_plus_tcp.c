@@ -25,8 +25,10 @@ bool uxr_init_udp_platform(
         uxrUDPPlatform* platform,
         uxrIpProtocol ip_protocol,
         const char* ip,
+        const char* recv_port,
         const char* port)
 {
+    recv_port = recv_port;
     bool rv = false;
     uint16_t iport;
 

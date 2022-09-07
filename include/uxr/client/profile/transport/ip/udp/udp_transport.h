@@ -55,7 +55,8 @@ UXRDLLAPI bool uxr_init_udp_transport(
         uxrUDPTransport* transport,
         uxrIpProtocol ip_protocol,
         const char* ip,
-        const char* port);
+        const char* recv_port,
+        const char* send_port);
 
 /**
  * @brief Closes a UDP transport.

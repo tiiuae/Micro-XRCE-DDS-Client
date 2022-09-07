@@ -26,7 +26,8 @@ bool uxr_init_udp_platform(
         struct uxrUDPPlatform* platform,
         uxrIpProtocol ip_protocol,
         const char* ip,
-        const char* port);
+        const char* recv_port,
+        const char* send_port);
 
 bool uxr_close_udp_platform(
         struct uxrUDPPlatform* platform);
