@@ -11,7 +11,8 @@ bool uxr_init_udp_platform(
         uxrUDPPlatform* platform,
         uxrIpProtocol ip_protocol,
         const char* ip,
-        const char* port)
+        const char* recv_port,
+        const char* send_port)
 {
     bool rv = false;
 
@@ -19,6 +20,17 @@ bool uxr_init_udp_platform(
     {
         case UXR_IPv4:
             platform->poll_fd.fd = socket(AF_INET, SOCK_DGRAM, 0);
+            uint16_t rport = (uint16_t)atoi(recv_port);
+            if (rport > 0) {
+                struct sockaddr_in _receiver_inaddr;
+                memset((char *)&_receiver_inaddr, 0, sizeof(_receiver_inaddr));
+                _receiver_inaddr.sin_family = AF_INET;
+                _receiver_inaddr.sin_port = htons(rport);
+                _receiver_inaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+                if (bind(platform->poll_fd.fd, (struct sockaddr *)&_receiver_inaddr, sizeof(_receiver_inaddr)) < 0) {
+                    return rv;
+                }
+            }
             break;
         case UXR_IPv6:
             platform->poll_fd.fd = socket(AF_INET6, SOCK_DGRAM, 0);
@@ -43,7 +55,7 @@ bool uxr_init_udp_platform(
         }
         hints.ai_socktype = SOCK_DGRAM;
 
-        if (0 == getaddrinfo(ip, port, &hints, &result))
+        if (0 == getaddrinfo(ip, send_port, &hints, &result))
         {
             for (ptr = result; ptr != NULL; ptr = ptr->ai_next)
             {
