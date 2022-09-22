@@ -7,6 +7,9 @@
 #elif defined(UCLIENT_PLATFORM_FREERTOS_PLUS_TCP)
 #include "FreeRTOS.h"
 #include "task.h"
+#elif defined(UCLIENT_PLATFORM_NUTTX)
+#include <visibility.h>
+#include <drivers/drv_hrt.h>
 #endif /* ifdef WIN32 */
 
 //==================================================================
@@ -56,7 +59,7 @@ int64_t uxr_nanos(
     z_impl_clock_gettime(CLOCK_REALTIME, &ts);
     return (((int64_t)ts.tv_sec) * 1000000000) + ts.tv_nsec;
 #elif defined(UCLIENT_PLATFORM_NUTTX)
-    hrt_abstime now = hrt_absolute_time();
+    uint64_t now = hrt_absolute_time();
     return ((int64_t)now * 1000);
 #else
     struct timespec ts;
