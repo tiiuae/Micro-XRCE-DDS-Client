@@ -55,6 +55,9 @@ int64_t uxr_nanos(
     struct timespec ts;
     z_impl_clock_gettime(CLOCK_REALTIME, &ts);
     return (((int64_t)ts.tv_sec) * 1000000000) + ts.tv_nsec;
+#elif defined(UCLIENT_PLATFORM_NUTTX)
+    hrt_abstime now = hrt_absolute_time();
+    return ((int64_t)now * 1000);
 #else
     struct timespec ts;
     clock_gettime(CLOCK_REALTIME, &ts);
