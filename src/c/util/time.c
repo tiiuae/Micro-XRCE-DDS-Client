@@ -7,6 +7,9 @@
 #elif defined(UCLIENT_PLATFORM_FREERTOS_PLUS_TCP)
 #include "FreeRTOS.h"
 #include "task.h"
+#elif defined(UCLIENT_PLATFORM_NUTTX)
+#include <visibility.h>
+#include <drivers/drv_hrt.h>
 #endif /* ifdef WIN32 */
 
 // PX4
