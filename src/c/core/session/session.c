@@ -1137,8 +1137,8 @@ void process_timestamp_reply(
     {
         session->on_time(session,
                 uxr_nanos(),
-                uxr_convert_to_nanos(timestamp->receive_timestamp.seconds, timestamp->receive_timestamp.nanoseconds),
                 uxr_convert_to_nanos(timestamp->transmit_timestamp.seconds, timestamp->transmit_timestamp.nanoseconds),
+                uxr_convert_to_nanos(timestamp->receive_timestamp.seconds, timestamp->receive_timestamp.nanoseconds),
                 uxr_convert_to_nanos(timestamp->originate_timestamp.seconds,
                 timestamp->originate_timestamp.nanoseconds),
                 session->on_time_args);
