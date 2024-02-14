@@ -59,8 +59,8 @@ bool uxr_init_tcp_platform(
                     break;
                 }
             }
+            freeaddrinfo(result);
         }
-        freeaddrinfo(result);
     }
     return rv;
 }
